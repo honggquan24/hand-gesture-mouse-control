@@ -1,2 +1,0 @@
-# hand-gesture-mouse-control
-
