@@ -29,15 +29,12 @@ This demo lets you **control the mouse cursor with real‑time hand gestures** c
 ```bash
 # 1) Clone the repo
 git clone https://github.com/honggquan24/hand-gesture-mouse-control.git
-cd hand‑gesture‑mouse
+cd hand-gesture-mouse-control
 
-# 2) Create & activate a virtual environment (optional but recommended)
-python -m venv .venv
-# Windows:
-.venv\Scripts\activate
-# macOS / Linux:
-source .venv/bin/activate
+# 2) Create & activate a Conda environment (Python ≥ 3.8)
+conda create -n gesturemouse python=3.10
+conda activate gesturemouse
 
-# 3) Install dependencies
-pip install --upgrade pip
+# 3) Install dependencies with pip inside the Conda env
+python -m pip install --upgrade pip
 pip install -r requirements.txt
