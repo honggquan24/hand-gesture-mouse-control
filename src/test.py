@@ -50,6 +50,10 @@ gesture_recognizer = vision.GestureRecognizer.create_from_options(gesture_option
 mp_drawing = mp.solutions.drawing_utils
 mp_styles = mp.solutions.drawing_styles
 
+# --- CẤU HÌNH CỬA SỔ PREVIEW ---
+preview_scale = 0.40               # Tỉ lệ hiển thị (40 %)
+window_name   = "Hand Gesture Recognition"
+
 def process_frame(frame):
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_frame)
@@ -133,7 +137,6 @@ def click_processing():
                     pyautogui.scroll(100)
                 elif gesture == "thumb_down":
                     pyautogui.scroll(-100)
-                # ✅ KHÔNG cần gán mouse_locked ở đây nữa
 
             # Tay phải điều khiển chuột (nếu không bị lock)
             if handed_label == "Right" and not mouse_locked:
@@ -196,6 +199,14 @@ def main():
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
     prev_time = time.time()
 
+    # --- Thiết lập cửa sổ preview ---
+    screen_w, screen_h = pyautogui.size()
+    preview_w = int(640 * preview_scale)
+    preview_h = int(480 * preview_scale)
+    cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
+    cv2.resizeWindow(window_name, preview_w, preview_h)
+    cv2.moveWindow(window_name, screen_w - preview_w, screen_h - preview_h - 40)  # -40 để tránh taskbar
+
     while True:
         ret, frame = cap.read()
         if not ret:
@@ -242,7 +253,12 @@ def main():
                     mp_drawing.DrawingSpec(thickness=2)
                 )
 
-        cv2.imshow("Hand Gesture Recognition", annotated_image)
+        # --- Hiển thị cửa sổ preview thu nhỏ ---
+        preview_img = cv2.resize(
+            annotated_image, (preview_w, preview_h), interpolation=cv2.INTER_LINEAR
+        )
+        cv2.imshow(window_name, preview_img)
+
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
