@@ -1,0 +1,6 @@
+opencv-python
+pycaw
+pyautogui
+autopy
+mediapipe
+numpy

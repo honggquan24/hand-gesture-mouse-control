@@ -65,8 +65,8 @@ IV. THOÁT CHƯƠNG TRÌNH
 ===========================
 TÍNH NĂNG ĐÃ CÓ
 ===========================
-- ✅ Điều khiển chuột mượt bằng tay phải
-- ✅ Các hành động tay trái: click, scroll, center
-- ✅ Giữ chuột đứng yên bằng gesture ✌️ "Victory"
-- ✅ Chọn lọc EMA / Mean / None tùy chọn
-- ✅ Ghim FPS ổn định (30 FPS)
+- Điều khiển chuột mượt bằng tay phải
+- Các hành động tay trái: click, scroll, center
+- Giữ chuột đứng yên bằng gesture "Victory"
+- Chọn lọc EMA / Mean / None tùy chọn
+- Ghim FPS ổn định (30 FPS)
